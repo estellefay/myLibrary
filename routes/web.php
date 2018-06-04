@@ -14,7 +14,4 @@
 Route::get('/{all?}', 'NavigationController@showPage');
 
 
-// Custom route
-Route::get('/test', 'NavigationController@testPage');
-
 

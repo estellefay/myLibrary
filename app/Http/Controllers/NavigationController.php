@@ -15,12 +15,8 @@ class NavigationController extends Controller
                 return abort('404');
            }
        } else {
-        return view('welcome'); // Sinon j'affiche la page d'aceuil
+        return view('home'); // Sinon j'affiche la page d'aceuil
        }
    }
 
-   public function testPage() 
-   {
-           return view('test');
-   }
 }
