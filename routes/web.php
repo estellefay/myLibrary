@@ -10,8 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Base route, require a views named like URI
-Route::get('/{all?}', 'NavigationController@showPage');
+
+Route::get('/books', 'BookController@display');
+Route::get('/book/new', 'BookController@insert');
+Route::post('/book/new', 'BookController@insertAction');
+Route::post('/book/delete', 'BookController@deleteAction');
+Route::get('/book/update', 'BookController@update');
+Route::post('/book/update/new', 'BookController@updateDisplay');
+
+
+
 
 
 

@@ -70,3 +70,48 @@ footer {
 h1 {
     margin: 0;
 }
+
+/* TABLE */
+
+.base-table tr:first-of-type {
+    text-transform: uppercase;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.base-table tr:nth-of-type(even) {
+    background-color: aliceblue;
+}
+
+.base-table tr:hover:not(:first-of-type) {
+    background-color: grey;
+    cursor: pointer;
+}
+
+/* form */
+
+form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+
+form-contenair {
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+
+}
+
+input {
+    width: 300px;
+    height: 30px;;
+}
+
+label {
+    font-size: 25px;
+    text-transform: uppercase;
+}
