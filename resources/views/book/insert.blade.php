@@ -1,14 +1,16 @@
 @extends('template')
 @section('content')
-<h1>Creation</h1>
-
-    <form action="/book/new" class="" method="post">
-        @csrf <!-- methode de scurioté interne a laravel il faut le mettre pour tout les formulaire --> 
-        @foreach ($bookForm as $key => $value) 
-        <label for="{{$key}}">{{$key}}:</label>
-        <input type="{{ $value }}" name="{{ $key }}" id="{{ $key }}" value="">  
-        @endforeach
-        <input type="submit" value="Inserer" name="">
+  <h1>Insertion</h1>
+    <form class="form-container" action="/book/new" method="post">
+      @csrf
+      @foreach ($bookForm as $key => $value)
+        <label for="{{$key}}">{{ $key }} : </label>
+        <input type="{{ $value }}" name="book[0][{{ $key }}]" id="{{ $key }}" value="">
+      @endforeach
+      @foreach ($bookForm as $key => $value)
+        <label for="{{$key}}">{{ $key }} : </label>
+        <input type="{{ $value }}" name="book[1][{{ $key }}]" id="{{ $key }}" value="">
+      @endforeach
+      <input type="submit" name="" value="Inserer">
     </form>
-
 @endsection

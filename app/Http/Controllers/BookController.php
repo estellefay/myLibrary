@@ -20,28 +20,27 @@ class BookController extends Controller
         $book = new Book;
         $bookColumn = $book->getTableColumns();
         $bookForm = [];
-        array_shift($bookColumn); # Enlever la première ligne du tableau 
-        array_pop($bookColumn); # Enlever la dernière ligne du tableau 
+        array_shift($bookColumn);
         array_pop($bookColumn);
-
+        array_pop($bookColumn);
         foreach ($bookColumn as $key => $value) {
-            $bookForm[$value] = "text";
+          $bookForm[$value] = "text";
         }
         return view('book.insert', ['bookForm' => $bookForm]);
     }
 
     public function insertAction(Request $request)
     {
-        $form = $request->input();
-        $book = new Book;
-        $book->title = $form['title'];
-        $book->author = $form['author'];
-        $book->genre = $form['genre'];
-        $book->excerpt = $form['excerpt'];
-        $book->save();
+        $formData = $request->input('book');
+        foreach ($formData as $key => $value) {
+          $book = new Book;
+          $book->title = $value['title'];
+          $book->author = $value['author'];
+          $book->genre = $value['genre'];
+          $book->excerpt = $value['excerpt'];
+          $book->save();
+        }
         return redirect('/books');
-
-       //  dd($request->input());
     }
 
     public function deleteAction(Request $request) 
@@ -49,6 +48,15 @@ class BookController extends Controller
         Book::destroy($request->input('id'));
         return redirect('/books');
     }
+
+    public function deleteActionMultiple(Request $request)
+    {
+      foreach (explode(",", $request->input('ids')) as $key => $value) {
+        Book::destroy($value);
+      }
+      return 'true';
+    }
+
 
     public function update(Request $request)
     {
@@ -59,9 +67,11 @@ class BookController extends Controller
         //Books::table('book')->where('id', $request->input('id'))->update(['author' => 'chocolat']);
     }
 
-    public function updateDisplay(Request $request)
+    public function updateAction(Request $request)
     {
+        // Found l'id du book 
         $book = Book::find($request->input('id'));
+        // Replace values 
         $book->title = $request->input('title');
         $book->author = $request->input('author');
         $book->genre = $request->input('genre');

@@ -48,14 +48,14 @@ main {
 aside {
     background-color: lightcoral;
     color: black;
-    width: 30vw;
+    width: 20vw;
     height: 70vh;
 }
 
 /* CONTENT */
 section {
     background-color: lightseagreen;
-    width: 70vw;
+    width: 80vw;
     height: 70vh;
 }
 
@@ -112,6 +112,6 @@ input {
 }
 
 label {
-    font-size: 25px;
+    font-size: 20px;
     text-transform: uppercase;
 }
